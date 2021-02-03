@@ -5,5 +5,9 @@
     <RootNamespace>firebase_demo</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="FirebaseAdmin" Version="2.0.0" />
+  </ItemGroup>
+
 
 </Project>
