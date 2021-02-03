@@ -31,7 +31,7 @@ namespace firebase_demo.Controllers
             {
                 return NotFound(authExc.Message);
             }
-            catch(FirebaseException fireExc)
+            catch (FirebaseException fireExc)
             {
 
                 return StatusCode(500, fireExc);
@@ -41,8 +41,16 @@ namespace firebase_demo.Controllers
         [HttpPost]
         public async Task<IActionResult> CreateUserAsync(UserRecordArgs userInfo)
         {
+            try
+            {
+                UserRecord userRecord = await FirebaseAuth.DefaultInstance.CreateUserAsync(userInfo);
+                return Ok(userRecord);
+            }
+            catch (FirebaseException fireExc)
+            {
 
-            return null;
+                return StatusCode(500, fireExc);
+            }
         }
     }
 }
