@@ -1,4 +1,5 @@
 ﻿using FirebaseAdmin;
+using FirebaseAdmin.Auth;
 using Google.Apis.Auth.OAuth2;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -9,16 +10,39 @@ using System.Threading.Tasks;
 
 namespace firebase_demo.Controllers
 {
-    [Route("api/[controller]")]
     [ApiController]
+    [Route("[controller]")]
     public class UserController : ControllerBase
     {
         public UserController()
         {
-            FirebaseApp.Create(new AppOptions() 
+
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> GetUserByIdAsync(string uid)
+        {
+            try
             {
-                Credential = GoogleCredential.GetApplicationDefault()
-            });
+                UserRecord userRecord = await FirebaseAuth.DefaultInstance.GetUserAsync(uid);
+                return Ok(userRecord);
+            }
+            catch (FirebaseAuthException authExc)
+            {
+                return NotFound(authExc.Message);
+            }
+            catch(FirebaseException fireExc)
+            {
+
+                return StatusCode(500, fireExc);
+            }
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> CreateUserAsync(UserRecordArgs userInfo)
+        {
+
+            return null;
         }
     }
 }
