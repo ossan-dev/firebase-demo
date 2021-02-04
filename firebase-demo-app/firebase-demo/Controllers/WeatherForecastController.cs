@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using FirebaseAdmin.Auth;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -36,6 +37,17 @@ namespace firebase_demo.Controllers
                 Summary = Summaries[rng.Next(Summaries.Length)]
             })
             .ToArray();
+        }
+
+        [HttpGet("get-auth")]
+        [Authorize]
+        public async Task<IActionResult> GetAuthParamsAsync()
+        {
+            string idToken = Request.Headers.FirstOrDefault(x => x.Key == "Authorization").Value;
+            idToken = idToken.Replace("Bearer ", "");
+                
+            FirebaseToken decodedToken = await FirebaseAuth.DefaultInstance.VerifyIdTokenAsync(idToken);
+            return Ok(decodedToken.Uid);
         }
     }
 }

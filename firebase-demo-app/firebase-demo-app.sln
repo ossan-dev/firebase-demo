@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30907.101
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "firebase-demo", "firebase-demo\firebase-demo.csproj", "{EB773D21-6EE5-490B-B0DD-6D75607FBE5B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "firebase-demo", "firebase-demo\firebase-demo.csproj", "{EB773D21-6EE5-490B-B0DD-6D75607FBE5B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp1", "ConsoleApp1\ConsoleApp1.csproj", "{1C6210F9-D0B9-486E-AB02-7F8178D4EC06}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{EB773D21-6EE5-490B-B0DD-6D75607FBE5B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EB773D21-6EE5-490B-B0DD-6D75607FBE5B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EB773D21-6EE5-490B-B0DD-6D75607FBE5B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1C6210F9-D0B9-486E-AB02-7F8178D4EC06}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1C6210F9-D0B9-486E-AB02-7F8178D4EC06}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1C6210F9-D0B9-486E-AB02-7F8178D4EC06}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1C6210F9-D0B9-486E-AB02-7F8178D4EC06}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
