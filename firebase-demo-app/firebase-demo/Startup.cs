@@ -34,7 +34,7 @@ namespace firebase_demo
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 .AddJwtBearer(options =>
                 {
-                    //options.Authority = Environment.GetEnvironmentVariable("JWT_AUTHORITY");
+                    options.Authority = Environment.GetEnvironmentVariable("JWT_AUTHORITY");
 
                     options.SecurityTokenValidators.Clear();
                     options.SecurityTokenValidators.Add(new CustomTokenValidator());
@@ -44,7 +44,7 @@ namespace firebase_demo
                         ValidateIssuer = true,
                         ValidateAudience = true,
                         ValidateLifetime = true,
-                        ValidateIssuerSigningKey = false,
+                        ValidateIssuerSigningKey = true,                        
                         ValidIssuer = Environment.GetEnvironmentVariable("JWT_AUTHORITY"),
                         ValidAudience = Environment.GetEnvironmentVariable("JWT_AUDIENCE")                        
                     };
