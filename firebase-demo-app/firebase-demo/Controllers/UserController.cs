@@ -54,6 +54,30 @@ namespace firebase_demo.Controllers
             }
         }
 
+        [HttpPatch]
+        public async Task<IActionResult> DisableUserAsync(string uid)
+        {
+            try
+            {
+                UserRecordArgs args = new UserRecordArgs()
+                {
+                    Uid = uid,
+                    Disabled = true
+                };
+                UserRecord userRecord = await FirebaseAuth.DefaultInstance.UpdateUserAsync(args);
+                return Ok(userRecord);
+            }
+            catch (FirebaseAuthException authExc)
+            {
+                return NotFound(authExc.Message);
+            }
+            catch (FirebaseException fireExc)
+            {
+
+                return StatusCode(500, fireExc);
+            }
+        }
+
         [HttpDelete]
         public async Task<IActionResult> DeleteUserByIdAsync(string uid)
         {
@@ -72,5 +96,7 @@ namespace firebase_demo.Controllers
                 return StatusCode(500, fireExc);
             }
         }
+
+
     }
 }
