@@ -44,7 +44,27 @@ namespace firebase_demo.Controllers
             try
             {
                 UserRecord userRecord = await FirebaseAuth.DefaultInstance.CreateUserAsync(userInfo);
+                var email = userRecord.Email;
+                var link = await FirebaseAuth.DefaultInstance.GeneratePasswordResetLinkAsync(email);
                 return Ok(userRecord);
+            }
+            catch (FirebaseException fireExc)
+            {
+                return StatusCode(500, fireExc);
+            }
+        }
+
+        [HttpDelete]
+        public async Task<IActionResult> DeleteUserByIdAsync(string uid)
+        {
+            try
+            {
+                await FirebaseAuth.DefaultInstance.DeleteUserAsync(uid);
+                return NoContent();
+            }
+            catch (FirebaseAuthException authExc)
+            {
+                return NotFound(authExc.Message);
             }
             catch (FirebaseException fireExc)
             {

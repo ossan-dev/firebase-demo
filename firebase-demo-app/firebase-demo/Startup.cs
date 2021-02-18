@@ -36,8 +36,8 @@ namespace firebase_demo
                 {
                     options.Authority = Environment.GetEnvironmentVariable("JWT_AUTHORITY");
 
-                    options.SecurityTokenValidators.Clear();
-                    options.SecurityTokenValidators.Add(new CustomTokenValidator());
+                    //options.SecurityTokenValidators.Clear();
+                    //options.SecurityTokenValidators.Add(new CustomTokenValidator());
 
                     options.TokenValidationParameters = new TokenValidationParameters
                     {
